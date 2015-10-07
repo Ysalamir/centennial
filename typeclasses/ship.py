@@ -1,8 +1,9 @@
 # file centennial/typeclasses/ship.py
 
-from evennia import DefaultObject
 
-class ShipObject(DefaultObject):
+from typeclasses.objects import Object
+
+class ShipObject(Object):
 
     def at_object_creation(self):
         pass

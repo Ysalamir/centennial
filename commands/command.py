@@ -36,19 +36,22 @@ class SheetCommand(BaseCommand):
 
 
 
-class RollCommand(BaseCommand):
+class CheckCommand(BaseCommand):
     key = "+check"
     aliases = ["check"]
     lock = "cmd:all()"
     help_category = "Skills"
     def func(self):
         attributes = self.caller.get_attributes()
+        input = self.args.strip()
         dieRoll = randint(1, 20)
-        if not self.args:
+        if not input:
             self.caller.msg("You must select a skill to check")
             return
-        if self.args in attributes:
-            self.caller.msg("You rolled %d", dieRoll + attributes[self.args])
+        if input in attributes:
+            self.caller.msg("You rolled %d" % (dieRoll + attributes[input]))
+        else:
+            self.caller.msg("{r%s ERROR:{n %s is not a valid input.  Please try again." % (self.key.upper(), input))
 
 
 

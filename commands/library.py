@@ -22,10 +22,10 @@ def make_table(*args, **kwargs):
             border_color = viewer.settings.get('color_border')
             column_color = viewer.settings.get('color_columns')
         except:
-            border_color = 'M'
+            border_color = 'b'
             column_color = 'G'
     else:
-        border_color = 'M'
+        border_color = 'b'
         column_color = 'G'
     if 'border_color' in kwargs:
         border_color = kwargs['border_color']
@@ -177,9 +177,9 @@ MAIN_COLOR_KEYS = ['borders', 'alerts', 'rooms']
 MAIN_COLOR_OPTIONS = {'borders': ['border', 'bordertext', 'borderdot'],
                       'alerts': ['border', 'roomdot', 'text', 'error'],
                       'rooms': ['players', 'exitnames', 'exitalias', 'border', 'bordertext', 'borderdot']}
-MAIN_COLOR_DEFAULTS = {'borders': {'border': 'M', 'bordertext': 'w', 'borderdot': 'm',},
+MAIN_COLOR_DEFAULTS = {'borders': {'border': 'B', 'bordertext': 'w', 'borderdot': 'b',},
                        'alerts': {'text': 'w', 'border': 'M', 'roomdot': 'm', 'error': 'r'},
-                       'rooms': {'players': 'n', 'exitnames': 'n', 'exitalias': 'x', 'border': 'M', 'bordertext': 'w', 'borderdot': 'm'},}
+                       'rooms': {'players': 'n', 'exitnames': 'n', 'exitalias': 'x', 'border': 'B', 'bordertext': 'w', 'borderdot': 'b'},}
 
 def header(header_text=None, width=78, width_mode='fixed', fill_character=None, edge_character=None,
            edges=False, viewer=None, mode='header', color_header=True):
@@ -208,8 +208,8 @@ def header(header_text=None, width=78, width_mode='fixed', fill_character=None, 
             header_text = ANSIString(header_text).clean()
             header_text = ANSIString('{n{%s%s{n' % (colors['headertext'], header_text))
         if mode == 'header':
-            begin_center = ANSIString("{n{%s<{%s* {n" % (colors['border'], colors['headerstar']))
-            end_center = ANSIString("{n {%s*{%s>{n" % (colors['headerstar'], colors['border']))
+            begin_center = ANSIString("{n{%s< {n" % colors['border'])
+            end_center = ANSIString("{n {%s>{n" % colors['border'])
             center_string = ANSIString(begin_center + header_text + end_center)
         else:
             center_string = ANSIString('{n {%s%s {n'% (colors['headertext'], header_text))
