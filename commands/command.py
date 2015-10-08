@@ -9,6 +9,7 @@ from evennia import Command as BaseCommand
 from evennia import default_cmds
 from commands.library import header, subheader, make_table, tabular_table
 from random import randint
+from world import rules
 
 class SheetCommand(BaseCommand):
     """
@@ -44,12 +45,12 @@ class CheckCommand(BaseCommand):
     def func(self):
         attributes = self.caller.get_attributes()
         input = self.args.strip()
-        dieRoll = randint(1, 20)
+        dieRoll = rules.roll_skill(self.caller, input)
         if not input:
             self.caller.msg("You must select a skill to check")
             return
         if input in attributes:
-            self.caller.msg("You rolled %d" % (dieRoll + attributes[input]))
+            self.caller.msg("You rolled %d" % dieRoll)
         else:
             self.caller.msg("{r%s ERROR:{n %s is not a valid input.  Please try again." % (self.key.upper(), input))
 
