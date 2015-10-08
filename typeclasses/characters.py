@@ -33,6 +33,7 @@ class Character(DefaultCharacter):
 
     def at_object_creation(self):
         self.db.attributes = {"strength": 18, "dexterity": 13, "constitution": 14, "intelligence": 12, "wisdom": 17, "charisma": 19}
+        self.db.xp = 100
 
     def get_attributes(self):
         return self.db.attributes
